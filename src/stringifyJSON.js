@@ -20,7 +20,7 @@ var stringifyJSON = function(obj) {
     } else {
       var wrapped = '{';
       for (prop in complexObj) {
-        if (complexObj[prop] === null) {
+        if ((complexObj[prop] === undefined) || (complexObj[prop] instanceof Function)) {
           continue;
         }
         if (wrapped !== '{') {
