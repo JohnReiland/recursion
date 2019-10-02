@@ -6,7 +6,14 @@
 var stringifyJSON = function(obj) {
   stringified = '';
   if (Array.isArray(obj === true)) {
-
+    stringified += '[';
+    for (var i = 0; i < obj.length; i++) {
+      if (i !== 0) {
+        stringified += ',';
+      }
+      stringified += obj[i].toString();
+    }
+    stringified += ']';
   }
 
   if ((typeof obj) === 'object') {
@@ -26,6 +33,6 @@ var stringifyJSON = function(obj) {
 };
 
 
-stringifyJSON({ x: 5, y: 6 });                                            // expected output: "{'x':5,'y':6}"
+stringifyJSON({ x: 5, y: 6 });        // expected output: "{'x':5,'y':6}"
 //stringifyJSON([new Number(3), new String('false'), new Boolean(false)]);  // "[3,'false',false]"
 //stringifyJSON({ x: [10, undefined, function(){}, Symbol('')] });          // "{'x':[10,null,null,null]}"
